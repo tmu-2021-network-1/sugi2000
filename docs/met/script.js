@@ -25,7 +25,7 @@ const getData = async (keyword) => {
   }
 }
 
-const render = (json) => {
+const renderJson = (json) => {
   const div = document.getElementById('result').appendChild('div');
   div.textContent = JSON.stringify(json, "", 2);
 }
