@@ -6,7 +6,7 @@ const search = async () => {
   const keyword = keywordInput.value;
   //console.log(keyword);
   const json = await getData(keyword)
-  render(json);
+  renderJson(json);
 }
 
 const getData = async (keyword) => {
@@ -17,12 +17,15 @@ const getData = async (keyword) => {
     console.log(response);
     if (response.ok) {
       const jsonResponse = await response.json();
-			renderJson(jsonResponse);
+			// renderJson(jsonResponse);
+      return jsonResponse;
     }
   }
   catch (error) {
     console.log(error);
+    return error;
   }
+  return {};
 }
 
 const renderJson = (json) => {
