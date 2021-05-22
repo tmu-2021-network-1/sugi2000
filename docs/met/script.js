@@ -11,7 +11,7 @@ const search = async () => {
   console.log(json);
   document.getElementById('count').textContent = `${json['objectIDs'].length}件見つかりました`;
 
-  const ids = json.objectIDs;
+  const ids = json['objectIDs'];
   const objectUri = `${searchUri}?q=${ids[0]}`;
   const objectJson = await getData(objectUri);
   console.log(objectJson);
