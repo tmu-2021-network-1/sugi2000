@@ -12,6 +12,14 @@ const search = async () => {
   document.getElementById('count').textContent = `${json['objectIDs'].length}件見つかりました`;
 
   const ids = json['objectIDs'];
+
+  const list = document.getElementById('objects');
+  for (let id of ids) {
+    const item = document.createElement('li');
+    item.textContent = id;
+    list.appendChild(item);
+  }
+
   const objectUri = `${searchUri}?q=${ids[0]}`;
   const objectJson = await getData(objectUri);
   console.log(objectJson);
