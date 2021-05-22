@@ -13,7 +13,7 @@ const search = async () => {
 
   const ids = json.objectIDs;
   const objectUri = `${searchUri}?q=${ids[0]}`;
-  const objectJson = await getData(objectUri)
+  const objectJson = await getData(objectUri);
   console.log(objectJson);
   renderJson(objectJson);
 }
@@ -21,7 +21,7 @@ const search = async () => {
 const getData = async (uri) => {
   try {
     console.log(uri);
-    const response = await fetch(endpoint);
+    const response = await fetch(uri);
     console.log(response);
     if (response.ok) {
       const jsonResponse = await response.json();
