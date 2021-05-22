@@ -20,7 +20,10 @@ button {
   background-color: #eee;
   text-align: center;
   margin: 5px;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: .5em;
+}
+.thumbnail {
+  width: 200px;
 }
