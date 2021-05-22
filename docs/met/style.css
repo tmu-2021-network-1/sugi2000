@@ -5,6 +5,10 @@ h1, h2 {
   font-weight: 400;
   color: steelblue;
 }
+input[type="text"],
+button {
+  font-size: 3em;
+}
 #objects {
   list-style: none;
   padding: 0;
