@@ -1,18 +1,23 @@
-
-const searchUri = `https://collectionapi.metmuseum.org/public/collection/v1/search`;
+const apiUri = 'https://collectionapi.metmuseum.org/public/collection/v1';
+const objectsUri = `${apiUri}/objects`;
+const searchUri = `${apiUri}/search`;
 
 const search = async () => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
   //console.log(keyword);
-  const json = await getData(keyword)
-  renderJson(json);
+  const uri = `${searchUri}?q=${keyword}`;
+  const json = await getData(uri)
+
+  const ids = json.objectIDs;
+  const objectUri = `${searchUri}?q=${ids[0]}`;
+  const objectJson = await getData(objectUri)
+  renderJson(objectJson);
 }
 
-const getData = async (keyword) => {
+const getData = async (uri) => {
   try {
-    const endpoint = `${searchUri}?q=${keyword}`;
-    console.log(endpoint);
+    console.log(uri);
     const response = await fetch(endpoint);
     console.log(response);
     if (response.ok) {
