@@ -22,6 +22,7 @@ button {
   margin: 5px;
   padding: 5px;
   width: 240px;
+  height: 260px;
   min-height: 180px;
   border-radius: .5em;
 }
