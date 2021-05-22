@@ -19,6 +19,10 @@ const search = async () => {
     const item = document.createElement('li');
     item.className = 'object';
     item.textContent = id;
+    const img = document.createElement('img');
+    img.src = `images/loading.gif`;
+    img.className = 'thumbnail';
+    item.appendChild(img);
     list.appendChild(item);
   }
 
@@ -27,11 +31,11 @@ const search = async () => {
     const objectUri = `${objectsUri}/${id}`;
     const objectJson = await getData(objectUri);
 
-    const item = document.querySelector(`.object:nth-of-type(${i})`);
-    const img = document.createElement('img');
+    const img = document.querySelector(`.object img:nth-of-type(${i})`);
+    // const img = document.createElement('img');
     img.src = objectJson['primaryImageSmall'];
-    img.className = 'thumbnail';
-    item.appendChild(img);
+    // img.className = 'thumbnail';
+    // item.appendChild(img);
     i++;
   }
 
