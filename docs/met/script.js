@@ -16,6 +16,7 @@ const search = async () => {
   const list = document.getElementById('objects');
   for (let id of ids) {
     const item = document.createElement('li');
+    item.className = 'object';
     item.textContent = id;
     list.appendChild(item);
   }
