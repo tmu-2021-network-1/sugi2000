@@ -20,7 +20,7 @@ const search = async () => {
     list.appendChild(item);
   }
 
-  const objectUri = `${searchUri}?q=${ids[0]}`;
+  const objectUri = `${objectsUri}?q=${ids[0]}`;
   const objectJson = await getData(objectUri);
   console.log(objectJson);
   renderJson(objectJson);
