@@ -7,11 +7,8 @@ h1, h2 {
 }
 #objects {
   list-style: none;
-}
-#objects li {
-  display: inline-block;
-  background-color: #eee;
-  border-radius: .5em;
+  padding: 0;
+  
 }
 .object {
   box-sizing: border-box;
