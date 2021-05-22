@@ -35,8 +35,8 @@ const search = async () => {
     i++;
   }
 
-  console.log(objectJson);
-  renderJson(objectJson);
+  // console.log(objectJson);
+  // renderJson(objectJson);
 }
 
 const getData = async (uri) => {
