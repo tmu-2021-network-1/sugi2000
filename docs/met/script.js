@@ -18,7 +18,7 @@ const search = async () => {
   for (let id of ids) {
     const item = document.createElement('li');
     item.className = 'object';
-    item.textContent = id;
+    item.innerHTML = `${id}<br>`;
     const img = document.createElement('img');
     img.src = `images/loading.gif`;
     img.className = 'thumbnail';
