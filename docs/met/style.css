@@ -14,8 +14,11 @@ h1, h2 {
   border-radius: .5em;
 }
 .object {
+  box-sizing: border-box;
   display: inline-block;
   background-color: #eee;
+  text-align: center;
+  margin: 5px;
   width: 100px;
   height: 100px;
   border-radius: .5em;
