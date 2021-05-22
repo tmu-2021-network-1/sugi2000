@@ -7,11 +7,14 @@ const search = async () => {
   const keyword = keywordInput.value;
   //console.log(keyword);
   const uri = `${searchUri}?q=${keyword}`;
-  const json = await getData(uri)
+  const json = await getData(uri);
+  console.log(json);
+  document.getElementById('count').textContent = `${json.objectIDs.length()}件見つかりました`;
 
   const ids = json.objectIDs;
   const objectUri = `${searchUri}?q=${ids[0]}`;
   const objectJson = await getData(objectUri)
+  console.log(objectJson);
   renderJson(objectJson);
 }
 
