@@ -22,14 +22,18 @@ const search = async () => {
     list.appendChild(item);
   }
 
-  const objectUri = `${objectsUri}/${ids[0]}`;
-  const objectJson = await getData(objectUri);
+  let i = 1;
+  for (let id of ids) {
+    const objectUri = `${objectsUri}/${id}`;
+    const objectJson = await getData(objectUri);
 
-  const item = document.querySelector('.object:nth-of-type(0)')
-  const img = document.createElement('img');
-  img.src = objectJson['primaryImageSmall'];
-  img.className = 'thumbnail';
-  item.appendChild(img);
+    const item = document.querySelector(`.object:nth-of-type(${i})`);
+    const img = document.createElement('img');
+    img.src = objectJson['primaryImageSmall'];
+    img.className = 'thumbnail';
+    item.appendChild(img);
+    i++;
+  }
 
   console.log(objectJson);
   renderJson(objectJson);
