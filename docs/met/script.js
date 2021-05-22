@@ -14,6 +14,7 @@ const search = async () => {
   const ids = json['objectIDs'];
 
   const list = document.getElementById('objects');
+  list.removeChild();
   for (let id of ids) {
     const item = document.createElement('li');
     item.className = 'object';
