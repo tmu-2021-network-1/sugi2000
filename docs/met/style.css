@@ -12,7 +12,10 @@ button {
 #objects {
   list-style: none;
   padding: 0;
-  
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  width: calc(5 * 210px);
 }
 .object {
   box-sizing: border-box;
