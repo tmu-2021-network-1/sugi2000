@@ -22,7 +22,7 @@ const search = async () => {
     <div><strong class="title"></strong></div>
     <div><a href="#" class="artist"></a></div>
     <div class="date"></div>
-    <a href="#" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
+    <a href="#" class="image-link" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
     // const img = document.createElement('img');
     // img.src = `images/loading.gif`;
     // img.className = 'thumbnail';
@@ -45,7 +45,7 @@ const search = async () => {
       search();
     })
     document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
-    const a = document.querySelectorAll(`.object a`)[i];
+    const a = document.querySelectorAll(`.object .image-link`)[i];
     a.href = objectJson['primaryImage'];
     const img = document.querySelectorAll(`.object img`)[i];
     // const img = document.createElement('img');
