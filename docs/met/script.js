@@ -18,11 +18,12 @@ const search = async () => {
   for (let id of ids) {
     const item = document.createElement('li');
     item.className = 'object';
-    item.innerHTML = `${id}<br>`;
-    const img = document.createElement('img');
-    img.src = `images/loading.gif`;
-    img.className = 'thumbnail';
-    item.appendChild(img);
+    item.innerHTML = `${id}<br>
+    <a href="#" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
+    // const img = document.createElement('img');
+    // img.src = `images/loading.gif`;
+    // img.className = 'thumbnail';
+    // item.appendChild(img);
     list.appendChild(item);
   }
 
@@ -30,7 +31,10 @@ const search = async () => {
   for (let id of ids) {
     const objectUri = `${objectsUri}/${id}`;
     const objectJson = await getData(objectUri);
+    console.log(objectJson);
 
+    const a = document.querySelectorAll(`.object a`)[i];
+    a.href = objectJson['primaryImage'];
     const img = document.querySelectorAll(`.object img`)[i];
     // const img = document.createElement('img');
     img.src = objectJson['primaryImageSmall'];
@@ -39,7 +43,6 @@ const search = async () => {
     i++;
   }
 
-  // console.log(objectJson);
   // renderJson(objectJson);
   return false;
 }
