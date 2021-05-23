@@ -21,7 +21,7 @@ const search = async () => {
     item.innerHTML = `<div class="id">${id}</div>
     <div class="title"></div>
     <div class="artist"></div>
-    <div class="≈"></div>
+    <div class="date"></div>
     <a href="#" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
     // const img = document.createElement('img');
     // img.src = `images/loading.gif`;
