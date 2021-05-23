@@ -18,7 +18,10 @@ const search = async () => {
   for (let id of ids) {
     const item = document.createElement('li');
     item.className = 'object';
-    item.innerHTML = `${id}<br>
+    item.innerHTML = `<div class="id">${id}</div>
+    <div class="title"></div>
+    <div class="artist"></div>
+    <div class="≈"></div>
     <a href="#" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
     // const img = document.createElement('img');
     // img.src = `images/loading.gif`;
@@ -33,6 +36,9 @@ const search = async () => {
     const objectJson = await getData(objectUri);
     console.log(objectJson);
 
+    document.querySelectorAll(`.object .title`)[i].textContent = objectJson['title'];
+    document.querySelectorAll(`.object .artist`)[i].textContent = objectJson['artistDisplayName'];
+    document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
     const a = document.querySelectorAll(`.object a`)[i];
     a.href = objectJson['primaryImage'];
     const img = document.querySelectorAll(`.object img`)[i];
