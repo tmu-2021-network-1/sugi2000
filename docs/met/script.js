@@ -5,7 +5,7 @@ const searchUri = `${apiUri}/search`;
 const search = async ({artistOrCulture = false} = {}) => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
-  const uri = `${searchUri}?q=${encodeURIComponent(keyword)}&artistOrCulture=${artistOrCulture}`;
+  const uri = `${searchUri}?hasImages=true&q=${encodeURIComponent(keyword)}&artistOrCulture=${artistOrCulture}`;
   console.log(uri);
   const json = await getData(uri);
   console.log(json);
