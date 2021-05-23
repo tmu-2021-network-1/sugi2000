@@ -40,10 +40,10 @@ const search = async () => {
     document.querySelectorAll(`.object .title`)[i].textContent = objectJson['title'].substr(0, 20);
     const artist = document.querySelectorAll(`.object .artist`)[i];
     artist.textContent = objectJson['artistDisplayName'].substr(0, 20);
-    artist.setAttribute('onclick', () => {
+    artist.onclick = () => {
       document.getElementById('keyword').value = objectJson['artistDisplayName'];
       search();
-    })
+    };
     document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
     const a = document.querySelectorAll(`.object .image-link`)[i];
     a.href = objectJson['primaryImage'];
