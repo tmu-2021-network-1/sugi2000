@@ -36,6 +36,7 @@ const search = async () => {
     const objectJson = await getData(objectUri);
     console.log(objectJson);
 
+    document.querySelectorAll(`.object .id`)[i].textContent = '';
     document.querySelectorAll(`.object .title`)[i].textContent = objectJson['title'].substr(0, 20);
     document.querySelectorAll(`.object .artist`)[i].textContent = objectJson['artistDisplayName'].substr(0, 20);
     document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
