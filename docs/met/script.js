@@ -9,7 +9,7 @@ const search = async ({artistOrCulture = false} = {}) => {
   const uri = `${searchUri}?q=${keyword}&artistOrCulture=${artistOrCulture}`;
   const json = await getData(uri);
   console.log(json);
-  document.getElementById('count').textContent = `${json['objectIDs'].length}件見つかりました`;
+  document.getElementById('count').textContent = `${json['total']}件見つかりました`;
 
   const ids = json['objectIDs'];
 
