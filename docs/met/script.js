@@ -2,11 +2,11 @@ const apiUri = 'https://collectionapi.metmuseum.org/public/collection/v1';
 const objectsUri = `${apiUri}/objects`;
 const searchUri = `${apiUri}/search`;
 
-const search = async () => {
+const search = async ({artistOrCulture = false} = {}) => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
   //console.log(keyword);
-  const uri = `${searchUri}?q=${keyword}`;
+  const uri = `${searchUri}?q=${keyword}&artistOrCulture=${artistOrCulture}`;
   const json = await getData(uri);
   console.log(json);
   document.getElementById('count').textContent = `${json['objectIDs'].length}件見つかりました`;
@@ -42,7 +42,7 @@ const search = async () => {
     artist.textContent = objectJson['artistDisplayName'].substr(0, 20);
     artist.onclick = () => {
       document.getElementById('keyword').value = objectJson['artistDisplayName'];
-      search();
+      search({artistOrCulture: true});
     };
     document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
     const a = document.querySelectorAll(`.object .image-link`)[i];
