@@ -42,7 +42,8 @@ const search = async ({artistOrCulture = false} = {}) => {
     artist.textContent = objectJson['artistDisplayName'].substr(0, 20);
     artist.onclick = () => {
       document.getElementById('keyword').value = objectJson['artistDisplayName'];
-      search({artistOrCulture: true});
+      search();
+      // search({artistOrCulture: true});
     };
     document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
     const a = document.querySelectorAll(`.object .image-link`)[i];
