@@ -28,6 +28,8 @@ button {
   height: 260px;
   min-height: 180px;
   border-radius: .5em;
+  overflow: scroll;
+  font-size: .8em;
 }
 .thumbnail {
   max-width: 200px;
