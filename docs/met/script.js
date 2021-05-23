@@ -19,7 +19,7 @@ const search = async () => {
     const item = document.createElement('li');
     item.className = 'object';
     item.innerHTML = `<div class="id">${id}</div>
-    <div class="title"></div>
+    <div><strong class="title"></strong></div>
     <div class="artist"></div>
     <div class="date"></div>
     <a href="#" target="_blank"><img alt="" src="images/loading.gif" class="thumbnail">`;
