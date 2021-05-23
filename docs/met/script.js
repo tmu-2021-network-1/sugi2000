@@ -41,6 +41,7 @@ const search = async () => {
 
   // console.log(objectJson);
   // renderJson(objectJson);
+  return false;
 }
 
 const getData = async (uri) => {
