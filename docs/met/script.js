@@ -5,8 +5,8 @@ const searchUri = `${apiUri}/search`;
 const search = async ({artistOrCulture = false} = {}) => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
-  //console.log(keyword);
   const uri = `${searchUri}?q=${keyword}&artistOrCulture=${artistOrCulture}`;
+  console.log(uri);
   const json = await getData(uri);
   console.log(json);
   document.getElementById('count').textContent = `${json['total']}件見つかりました`;
