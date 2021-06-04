@@ -2,10 +2,14 @@ const apiUri = 'https://collectionapi.metmuseum.org/public/collection/v1';
 const objectsUri = `${apiUri}/objects`;
 const searchUri = `${apiUri}/search`;
 
-const search = async ({artistOrCulture = false} = {}) => {
+const search = async () => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
-  const uri = `${searchUri}?hasImages=true&q=${encodeURIComponent(keyword)}&artistOrCulture=${artistOrCulture}`;
+  const locationInput = document.getElementById('location');
+  const location = locationInput.value;
+  const minWidth = +document.getElementById('min-width').value;
+  const maxWidth = +document.getElementById('max-width').value;
+  const uri = `${searchUri}?geoLocation=${location}&hasImages=true&dateBegin=1000&q=${encodeURIComponent(keyword)}`;
   console.log(uri);
   const json = await getData(uri);
   console.log(json);
@@ -32,28 +36,33 @@ const search = async ({artistOrCulture = false} = {}) => {
 
   let i = 0;
   for (let id of ids) {
+    const object = document.querySelectorAll(`.object`)[i];
     const objectUri = `${objectsUri}/${id}`;
     const objectJson = await getData(objectUri);
     console.log(objectJson);
 
-    document.querySelectorAll(`.object .id`)[i].textContent = '';
-    document.querySelectorAll(`.object .title`)[i].textContent = objectJson['title'].substr(0, 20);
-    const artist = document.querySelectorAll(`.object .artist`)[i];
+    object.querySelector(`.id`).textContent = '';
+    object.querySelector(`.title`).textContent = objectJson['title'].substr(0, 20);
+    // document.querySelectorAll(`.object .id`)[i].textContent = '';
+    // document.querySelectorAll(`.object .title`)[i].textContent = objectJson['title'].substr(0, 20);
+    const artist = object.querySelector(`.artist`)
+    //document.querySelectorAll(`.object .artist`)[i];
     artist.textContent = objectJson['artistDisplayName'].substr(0, 20);
     artist.onclick = () => {
       document.getElementById('keyword').value = objectJson['artistDisplayName'];
       search();
       // search({artistOrCulture: true});
     };
-    document.querySelectorAll(`.object .date`)[i].textContent = objectJson['objectDate'];
-    const a = document.querySelectorAll(`.object .image-link`)[i];
-    // a.href = objectJson['primaryImage'];
+    object.querySelector(`.date`).textContent = objectJson['objectDate'];
+    const a = object.querySelector(`.image-link`);
     a.href = `detail.html?id=${id}`;
-    const img = document.querySelectorAll(`.object img`)[i];
-    // const img = document.createElement('img');
+    const img = object.querySelector(`img`);
     img.src = objectJson['primaryImageSmall'];
-    // img.className = 'thumbnail';
-    // item.appendChild(img);
+
+    const width = objectJson.measurements[0].elementMeasurements.Width;
+    if (width < minWidth || width > maxWidth) {
+      object.classList.add('off');
+    }
     i++;
   }
 

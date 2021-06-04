@@ -31,6 +31,10 @@ button {
   overflow: scroll;
   font-size: .8em;
 }
+.object.off {
+  background-color: #000;
+  opacity: 0.5;
+}
 .thumbnail {
   max-width: 200px;
   max-height: 200px;
