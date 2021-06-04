@@ -11,6 +11,19 @@ const render = async () => {
   
   const objectDiv = document.getElementById('object');
 
+  const imageLink = document.createElement('a');
+  imageLink.href = objectJson.primaryImage;
+  imageLink.innerHTML = `<img src="${objectJson.primaryImageSmall}">`;
+  objectDiv.appendChild(imageLink);
+
+  const height = objectJson.measurements[0].elementMeasurements.Height;
+  const width = objectJson.measurements[0].elementMeasurements.Width;
+
+  const p = document.createElement('p');
+  p.innerText = `${height} x ${width} cm`;
+  objectDiv.appendChild(p);
+
+
   const table = document.createElement('table');
   for (const property in objectJson) {
     const tr = document.createElement('tr');
