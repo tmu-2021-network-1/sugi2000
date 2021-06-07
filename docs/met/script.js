@@ -2,11 +2,19 @@ const apiUri = 'https://collectionapi.metmuseum.org/public/collection/v1';
 const objectsUri = `${apiUri}/objects`;
 const searchUri = `${apiUri}/search`;
 
-const search = async () => {
+const search = async (button) => {
   const keywordInput = document.getElementById('keyword');
   const keyword = keywordInput.value;
-  const locationInput = document.getElementById('location');
-  const location = locationInput.value;
+  
+  // get location
+  let location = "";
+  if (button) {
+    location = button.value;
+  } else {
+    const locationInput = document.getElementById('location');
+    location = locationInput.value;
+  }
+
   const minWidth = +document.getElementById('min-width').value;
   const maxWidth = +document.getElementById('max-width').value;
   const uri = `${searchUri}?geoLocation=${location}&hasImages=true&dateBegin=1000&q=${encodeURIComponent(keyword)}`;
