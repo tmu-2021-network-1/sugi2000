@@ -69,8 +69,8 @@ const search = async (button) => {
 
     // get width
     let width = 0;
-    if (objectJSON.measurements && objectJSON.measurements.length > 0) {
-      width = objectJSON.measurements[0].elementMeasurements.Width;
+    if (objectJson.measurements && objectJson.measurements.length > 0) {
+      width = objectJson.measurements[0].elementMeasurements.Width;
     }
     if (width < minWidth || width > maxWidth) {
       object.classList.add('off');
