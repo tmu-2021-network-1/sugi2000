@@ -67,7 +67,11 @@ const search = async (button) => {
     const img = object.querySelector(`img`);
     img.src = objectJson['primaryImageSmall'];
 
-    const width = objectJson.measurements[0].elementMeasurements.Width;
+    // get width
+    let width = 0;
+    if (objectJSON.measurements && objectJSON.measurements.length > 0) {
+      width = objectJSON.measurements[0].elementMeasurements.Width;
+    }
     if (width < minWidth || width > maxWidth) {
       object.classList.add('off');
     }
